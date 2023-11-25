@@ -1,4 +1,5 @@
 import Message from "./Message";
+import ButtonComponenet from "./components/ButtonComponent";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -10,9 +11,16 @@ function App() {
     <div>
       <ListGroup
         items={items}
-        heading="Cities"
+        heading="Where do you wanna go?"
         onSelectItem={handleSelectItem}
       />
+      <br></br>
+      <ButtonComponenet
+        color="danger"
+        onClick={() => console.log("Button has been clicked!")}
+      >
+        Submit Here
+      </ButtonComponenet>
     </div>
   );
 }
