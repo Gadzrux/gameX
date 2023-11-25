@@ -1,11 +1,34 @@
+import { Fragment, useState } from "react";
+
 function ListGroup() {
+  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+  // Hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
-    <ul className="list-group">
-      <li className="list-group-item">First item</li>
-      <li className="list-group-item">Second item</li>
-      <li className="list-group-item">Third item</li>
-      <li className="list-group-item">Fourth item</li>
-    </ul>
+    <Fragment>
+      <h1>Lists</h1>
+      {/* {items.length === 0 ? <p>No item found</p> : null} */}
+      {/* when two values are compared like this the second value is returned from
+      and (test in console) */}
+      {items.length === 0 && <p>No item found</p>}
+      <ul className="list-group">
+        {items.map((item, index) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </Fragment>
   );
 }
 
